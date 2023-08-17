@@ -83,7 +83,7 @@ gptConnection.post("/ask-gpt-polishing", async (req, res) => {
     })
 })
 gptConnection.listen(port, () => {
-    console.log(`gptConnection listening at http://localhost:${port}`);
+    console.log(`gptConnection listening at https://tubular-pithivier-1ac39c.netlify.app:${port}`);
 })
 ///////// server listen
 const WebSocket = require('ws');

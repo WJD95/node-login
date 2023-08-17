@@ -71,7 +71,7 @@ function initial_friendlist() {
                 const data = {
                     username: friendname,
                 }
-                fetch('https://tubular-pithivier-1ac39c.netlify.app:3000/find-friends', {
+                fetch('https://tubular-pithivier-1ac39c.netlify.app/find-friends', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -173,7 +173,7 @@ function initial_message(targetUser) {
         username: username,
         friendname: friendname,
     }
-    fetch('https://tubular-pithivier-1ac39c.netlify.app:3000/get-message', {
+    fetch('https://tubular-pithivier-1ac39c.netlify.app/get-message', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -388,7 +388,7 @@ document.getElementById('save').addEventListener('click', function () {
             offensive_p_value: document.getElementById('humor_slider_p').value
         }
     };
-    fetch('https://tubular-pithivier-1ac39c.netlify.app:3000/save-chat-style', {
+    fetch('https://tubular-pithivier-1ac39c.netlify.app/save-chat-style', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -435,7 +435,7 @@ socket.onmessage = function (event) {
             friendname: current_friendname,
             message: chatBox.innerHTML
         }
-        fetch('https://tubular-pithivier-1ac39c.netlify.app:3000/save-mymessage', {
+        fetch('https://tubular-pithivier-1ac39c.netlify.app/save-mymessage', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
