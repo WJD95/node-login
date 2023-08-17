@@ -1,10 +1,6 @@
 
 // var chatBox = document.getElementById('chatContainer');
 // const br = document.createElement('br');
-// ///////////////////////////web socket
-// var socket = new WebSocket("ws://localhost:8080"); // WebSocket connection
-// const socket = io.connect('http://localhost:8080');
-
 
 /////////////////////
 function initial_friendlist() {
@@ -13,7 +9,7 @@ function initial_friendlist() {
     const data = {
         username: username,
     }
-    fetch('http://localhost:3000/get-friendlist', {
+    fetch('https://tubular-pithivier-1ac39c.netlify.app/get-friendlist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -54,7 +50,7 @@ function initial_friendlist() {
                     friendlist: friendList,
                     targetusername: targetusername
                 }
-                fetch('http://localhost:3000/save-friendList', {
+                fetch('https://tubular-pithivier-1ac39c.netlify.app/save-friendList', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -75,7 +71,7 @@ function initial_friendlist() {
                 const data = {
                     username: friendname,
                 }
-                fetch('http://localhost:3000/find-friends', {
+                fetch('https://tubular-pithivier-1ac39c.netlify.app:3000/find-friends', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -177,7 +173,7 @@ function initial_message(targetUser) {
         username: username,
         friendname: friendname,
     }
-    fetch('http://localhost:3000/get-message', {
+    fetch('https://tubular-pithivier-1ac39c.netlify.app:3000/get-message', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -241,7 +237,7 @@ function initial_message(targetUser) {
                     }
                     messageText = targetmessage;
                     if (isAnyChecked && messageText) {
-                        fetch('http://localhost:3001/ask-gpt-recommendation', {
+                        fetch('https://tubular-pithivier-1ac39c.netlify.app:3001/ask-gpt-recommendation', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -392,7 +388,7 @@ document.getElementById('save').addEventListener('click', function () {
             offensive_p_value: document.getElementById('humor_slider_p').value
         }
     };
-    fetch('http://localhost:3000/save-chat-style', {
+    fetch('https://tubular-pithivier-1ac39c.netlify.app:3000/save-chat-style', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -415,7 +411,7 @@ document.getElementById('save').addEventListener('click', function () {
 var chatBox = document.getElementById('chatContainer');
 const br = document.createElement('br');
 
-var socket = new WebSocket("ws://localhost:8080"); // WebSocket connection
+var socket = new WebSocket("https://tubular-pithivier-1ac39c.netlify.app:8080"); // WebSocket connection
 
 ///////////////////////////
 socket.onmessage = function (event) {
@@ -439,7 +435,7 @@ socket.onmessage = function (event) {
             friendname: current_friendname,
             message: chatBox.innerHTML
         }
-        fetch('http://localhost:3000/save-mymessage', {
+        fetch('https://tubular-pithivier-1ac39c.netlify.app:3000/save-mymessage', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -787,7 +783,7 @@ assistantButton.addEventListener('click', function () {
         }
     }
     if (isAnyChecked && messageText) {
-        fetch('http://localhost:3001/ask-gpt-polishing', {
+        fetch('https://tubular-pithivier-1ac39c.netlify.app/ask-gpt-polishing', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -911,7 +907,7 @@ function initial_settings(targetusername) {
         username: document.getElementById('username').innerText,
         friendname: targetusername
     };
-    fetch('http://localhost:3000/get-settings', {
+    fetch('https://tubular-pithivier-1ac39c.netlify.app/get-settings', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

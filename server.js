@@ -302,7 +302,7 @@ app.use(async ctx => {
             username: username  // 这里可以是任何用户名或从数据库中获取的用户数据
         });
         const outputFileName = username+'chatwindow.html';
-        fs.writeFileSync(outputFileName, htmlContent, 'utf-8');
+        fs.writeFileSync('publish/'+outputFileName, htmlContent, 'utf-8');
         console.log(`File ${outputFileName} created successfully!`);
         ctx.body = { success: true }
     } else if (ctx.url === '/users' && ctx.method === 'GET') {
