@@ -60,7 +60,7 @@
 
             loginBtn.addEventListener('click', async() =>{
                 const body = getBody();
-                const response = await fetchData('https://tubular-pithivier-1ac39c.netlify.app/login', body)
+                const response = await fetchData('https://personalisedchat.netlify.app/login', body)
                 const data = await response.json()
                 const loginUsername = document.getElementById('loginUsername')
                 loginUsername.innerText = data.username
@@ -73,7 +73,7 @@
             })
             registryBtn.addEventListener('click', async() =>{
                 const body = getBody();
-                const response =  fetchData('https://tubular-pithivier-1ac39c.netlify.app/registry', body)
+                const response =  fetchData('https://personalisedchat.netlify.app/registry', body)
                 const data = await response.json()
             })
         </script>
