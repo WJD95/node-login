@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>login</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">
+                Welcome to Personalised Chat App
+            </div>
+            <div class="mgb12"> 
+                <label>Username</label>
+                <input type="text" id="username">
+            </div>
+            <div class="mgb12"> 
+                <label>Password</label>
+                <input type="password" id="password">
+            </div>
+            <button id="login-btn" class="mgb12">login</button>
+            <button id="registry-btn" class="mgb12">register</button>
+            <div class="info mgb12">
+                <label>Login Status:</label>
+                <span id="loginUsername"></span>
+            </div>
+            <div class="users">
+                <div class="title"> All registered users</div>
+                <span id="userList"></span>
+            </div>
+        </div>
+        <script>
+            const loginBtn = document.getElementById('login-btn');
+            const registryBtn = document.getElementById('registry-btn');
+
+            function getBody(){
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                return {username, password}
+            }
+
+            function fetchData(url, body){
+                return fetch(url,{
+                    method:'POST',
+                    headers:{
+                        "Content-Type":"application/json;charset=UTF-8"
+                    },
+                    body: JSON.stringify(body)
+                })
+            }
+
+            async function fetchUser(){
+                const response = await fetch('http://localhost:3000/users')
+                const data = await response.json()
+                const userList = document.getElementById('userList')
+                userList.innerHTML = data.users.map(item => `<div>${item}<\div>`).join('')
+            }
+
+            fetchUser()
+
+            loginBtn.addEventListener('click', async() =>{
+                const body = getBody();
+                const response = await fetchData('http://localhost:3000/login', body)
+                const data = await response.json()
+                const loginUsername = document.getElementById('loginUsername')
+                loginUsername.innerText = data.username
+                if(data.username === 'account or password incorrect!'){
+                    loginUsername.className = 'fail'
+                }else{
+                    loginUsername.className = 'success'
+                    window.location.href = data.username.split(' ')[0]+"chatwindow.html";
+                }
+            })
+            registryBtn.addEventListener('click', async() =>{
+                const body = getBody();
+                const response =  fetchData('http://localhost:3000/registry', body)
+                const data = await response.json()
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whatsapp Web design using html & css</title>
+<link rel="stylesheet" type="text/css" href="chatbox_style.css">
+</head>
+<body id="body">
+    <div class="container">
+        <div class="leftSide">
+            <!-- header -->
+            <div class="header">
+                <div class="userimg">
+                    <img src="whatsapp_image/user.jpg" class="cover">
+                </div>
+                <p id="username">test4</p>
+                <ul class="nav_icons">
+                    <ion-icon name="person-add-outline" id="add-friends"></ion-icon>
+                </ul>
+                <div class="add-block hidden">
+                    <label for="friendName"><b>Friend Name:</b></label>
+                    <input type="text" id="friendName" name="friendName" required>
+                    <button id="add-freind-btn">Add</button>
+                </div>
+            </div>
+            <!-- search -->
+            <div class="search_chat">
+                <div>
+                    <input type="text" placeholder="Seach or start new chat">
+                    <ion-icon name="search-outline"></ion-icon>
+                </div>
+            </div>
+            <!-- chat list-->
+            <div class="chatlist">
+                
+            </div>
+
+        </div>
+        <div class="rightSide">
+            <div class="header">
+                <div class="imgText">
+                    <div class="userimg">
+                        <img src="whatsapp_image/user.jpg" class="cover">
+                    </div>
+                    <h4 id="targetUser"></h4>
+                </div>
+                <ul class="nav_icons">
+                    <li><ion-icon name="search-outline"></ion-icon></li>
+                    <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
+                </ul>
+            </div>
+            <!-- setting window -->
+            <div id="setting-window" class="hidden">
+                    <div class="title">
+                        <p><b>AI Assistant Setting</b></p>
+                    </div>
+                    <div id="language-selection-setting">
+                        <label>AI Language : </label>
+                        <label class="custom-radio language">                            
+                            <input type="radio" name="chinese-english" value="Chinese">
+                            <span class="radio-mark"></span>
+                            Chinese 
+                        </label>
+                        <label class="custom-radio language">
+                            <input type="radio" name="chinese-english" value="English" checked>
+                            <span class="radio-mark"></span>
+                            English 
+                        </label>  
+                    </div>
+                    <div id="extraversion-setting">
+                        <label>AI Extroversion : </label>
+                        <label class="custom-radio extraversion">                            
+                            <input type="radio" name="introverted-average-extraverted" value="Introverted">
+                            <span class="radio-mark"></span>
+                            Introverted 
+                        </label>
+                        <label class="custom-radio extraversion">
+                            <input type="radio" name="introverted-average-extraverted" value="Average" checked>
+                            <span class="radio-mark"></span>
+                            Average 
+                        </label>  
+                        <label class="custom-radio extraversion">
+                            <input type="radio" name="introverted-average-extraverted" value="Extraverted">
+                            <span class="radio-mark"></span>
+                            Extroverted 
+                        </label>  
+                    </div>
+                    <div id="familiarity-setting">
+                        <label for="familiarity_slider" class="custom-checkbox">
+                            <input type="checkbox" name="familiarity_slider" value="familiarity_slider" id="familiarity-checkbox" class="checkbox">
+                            Familiarity : 
+                        </label>
+                        <input type="range" id="familiarity_slider" name="familiarity_slider" min="1" max="5" step="0.01" value="1" oninput="updateValue_familiarity()">
+                        <label id="familiarity-value">1</label>
+                    </div>          
+                    <div id="ai-recommendation-setting">
+                        <p class="subtitle"><b>AI Text Recommendation Setting</b></p>
+                        <div id="recommendation-humor-style" class="language-style">
+                            <label for="humor_slider_r" class="custom-checkbox">
+                                <input type="checkbox" name="humor_slider_r" value="humor_slider_r" id="humor-checkbox-r" class="checkbox">
+                                <span>Humor: </span>
+                            </label>
+                            <input type="range" id="humor_slider_r" name="humor_slider_r" min="1" max="5" step="0.01" value="1" oninput="updateValue_humor_r()">
+                            <label id="humor-value_r">1</label>
+                        </div>
+                        <div id="recommendation-playful-style" class="language-style">
+                            <label for="playful_slider_r" class="custom-checkbox">
+                                <input type="checkbox" name="playful_slider_r" value="playful_slider_r" id="playful-checkbox-r" class="checkbox">
+                                Playful: 
+                            </label>
+                            <input type="range" id="playful_slider_r" name="playful_slider_r" min="1" max="5" step="0.01" value="1" oninput="updateValue_playful_r()">
+                            <label id="playful-value_r">1</label>
+                        </div>
+                        <div id="recommendation-respectful-style" class="language-style">
+                            <label for="respectful_slider_r" class="custom-checkbox">
+                                <input type="checkbox" name="respectful_slider_r" value="respectful_slider_r" id="respectful-checkbox-r" class="checkbox">
+                                Respectful: 
+                            </label>
+                            <input type="range" id="respectful_slider_r" name="respectful_slider_r" min="1" max="5" step="0.01" value="1" oninput="updateValue_respectful_r()">
+                            <label id="respectful-value_r">1</label>
+                        </div>
+                        <div id="recommendation-serious-style" class="language-style">
+                            <label for="serious_slider_r" class="custom-checkbox">
+                                <input type="checkbox" name="serious_slider_r" value="serious_slider_r" id="serious-checkbox-r" class="checkbox">
+                                Serious: 
+                            </label>
+                            <input type="range" id="serious_slider_r" name="serious_slider_r" min="1" max="5" step="0.01" value="1" oninput="updateValue_serious_r()">
+                            <label id="serious-value_r">1</label>
+                        </div>
+                        <div id="recommendation-offensive-style" class="language-style">
+                            <label for="offensive_slider_r" class="custom-checkbox">
+                                <input type="checkbox" name="offensive_slider_r" value="offensive_slider_r" id="offensive-checkbox-r" class="checkbox">
+                                Offensive: 
+                            </label>
+                            <input type="range" id="offensive_slider_r" name="offensive_slider_r" min="1" max="5" step="0.01" value="1" oninput="updateValue_offensive_r()">
+                            <label id="offensive-value_r">1</label>
+                        </div>
+                    </div>
+                    <div id="ai-rewrite-setting">
+                        <p class="subtitle"><b>AI Text Polishing Setting</b></p>
+                        <div id="rewrite-humor-style" class="language-style">
+                            <label for="humor_slider_p" class="custom-checkbox">
+                                <input type="checkbox" name="humor_slider_p" value="humor_slider_p" id="humor-checkbox-p" class="checkbox">
+                                Humor: 
+                            </label>
+                            <input type="range" id="humor_slider_p" name="humor_slider_p" min="1" max="5" step="0.01" value="1" oninput="updateValue_humor_p()">
+                            <label id="humor-value_p">1</label>
+                        </div>
+                        <div id="rewrite-playful-style" class="language-style">
+                            <label for="playful_slider_p" class="custom-checkbox">
+                                <input type="checkbox" name="playful_slider_p" value="playful_slider_p" id="playful-checkbox-p" class="checkbox">
+                                Playful: 
+                            </label>
+                            <input type="range" id="playful_slider_p" name="playful_slider_p" min="1" max="5" step="0.01" value="1" oninput="updateValue_playful_p()">
+                            <label id="playful-value_p">1</label>
+                        </div>
+                        <div id="rewrite-respectful-style" class="language-style">
+                            <label for="respectful_slider_p" class="custom-checkbox">
+                                <input type="checkbox" name="respectful_slider_p" value="respectful_slider_p" id="respectful-checkbox-p" class="checkbox">
+                                Respectful: 
+                            </label>
+                            <input type="range" id="respectful_slider_p" name="respectful_slider_p" min="1" max="5" step="0.01" value="1" oninput="updateValue_respectful_p()">
+                            <label id="respectful-value_p">1</label>
+                        </div>
+                        <div id="rewrite-serious-style" class="language-style">
+                            <label for="serious_slider_p" class="custom-checkbox">
+                                <input type="checkbox" name="serious_slider_p" value="serious_slider_p" id="serious-checkbox-p" class="checkbox">
+                                Serious: 
+                            </label>
+                            <input type="range" id="serious_slider_p" name="serious_slider_p" min="1" max="5" step="0.01" value="1" oninput="updateValue_serious_p()">
+                            <label id="serious-value_p">1</label>
+                        </div>
+                        <div id="rewrite-offensive-style" class="language-style">
+                            <label for="offensive_slider_p" class="custom-checkbox">
+                                <input type="checkbox" name="offensive_slider_p" value="offensive_slider_p" id="offensive-checkbox-p" class="checkbox">
+                                Offensive: 
+                            </label>
+                            <input type="range" id="offensive_slider_p" name="offensive_slider_p" min="1" max="5" step="0.01" value="1" oninput="updateValue_offensive_p()">
+                            <label id="offensive-value_p">1</label>
+                        </div>
+                    </div>
+                    <div id="submit">
+                        <button value="Save" id="save">Save</button>
+                    </div>
+            </div>
+            <!-- recommendation window -->
+            <div id="recommendation-window" class="hidden">
+                <b id="notice-recommendation-result">AI Recommendation Result:</b> <span class="loading-spinner-recommendation"></span><br>
+                <div class="AI-recommendation-result" onclick="changeInputMessage(this)" id="recommendation-humor" style="display: none;">
+                    
+                </div>
+                <div class="AI-recommendation-result" onclick="changeInputMessage(this)" id="recommendation-playful" style="display: none;">
+                    
+                </div>
+                <div class="AI-recommendation-result" onclick="changeInputMessage(this)" id="recommendation-respectful" style="display: none;">
+                    
+                </div>
+                <div class="AI-recommendation-result" onclick="changeInputMessage(this)" id="recommendation-serious" style="display: none;">
+                    
+                </div>
+                <div class="AI-recommendation-result" onclick="changeInputMessage(this)" id="recommendation-offensive" style="display: none;">
+                    
+                </div>
+            </div>
+            <!-- polishing window -->
+            <div id="polishing-window" class="hidden">
+                <div>
+                    <b id="notice-polish-result">AI Polishing Result:</b> <span class="loading-spinner"></span><br>
+                </div>
+                <div class="AI-polishing-result" onclick="changeInputMessage(this)" id="polishing-humor" style="display: none;">
+                    
+                </div>
+                <div class="AI-polishing-result" onclick="changeInputMessage(this)" id="polishing-playful" style="display: none;">
+                    
+                </div>
+                <div class="AI-polishing-result" onclick="changeInputMessage(this)" id="polishing-respectful" style="display: none;">
+                    
+                </div>
+                <div class="AI-polishing-result" onclick="changeInputMessage(this)" id="polishing-serious" style="display: none;">
+                    
+                </div>
+                <div class="AI-polishing-result" onclick="changeInputMessage(this)" id="polishing-offensive" style="display: none;">
+                    
+                </div>
+            </div>
+            <!-- chatbox -->
+            <div class="chatBox" id="chatContainer">
+                
+                
+            </div>
+            
+            <!-- chat input -->
+            <div class="chatbox_input" id="chatbox_input">
+                <ion-icon name="mic-outline"></ion-icon>   
+                <!-- <ion-icon name="happy-outline"></ion-icon> -->
+                <ion-icon name="accessibility-outline" id="assistant-btn"></ion-icon>
+                <input type="text" placeholder="Type a message" id="inputText">
+                <ion-icon name="send-outline" id="send-btn"></ion-icon>
+                <!-- <ion-icon name="add-outline" id="test_api"></ion-icon> -->
+                <ion-icon name="cog-outline" id="setting-btn"></ion-icon>
+                <!-- <ion-icon name="attach-outline"></ion-icon> -->
+            </div>
+          
+        </div>
+
+        
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="chatbox.js"></script>
+</body>
+</html>

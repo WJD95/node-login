@@ -1,0 +1,769 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(#009688 0%, #009688 130px, #d9dbd5 130px, #d9dbd5 100%);
+}
+
+.container {
+    position: relative;
+    width: 1396px;
+    max-width: 100%;
+    height: calc(100vh - 40px);
+    background: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+}
+
+.container .leftSide {
+    position: relative;
+    flex: 30%;
+    background: #fff;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.container .rightSide {
+    position: relative;
+    flex: 70%;
+    background: #e5ddd5;
+}
+
+.container .rightSide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(whatsapp_image/background.jpg);
+    opacity: 0.06;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: #ededed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.userimg {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav_icons {
+    display: flex;
+}
+
+.nav_icons {
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+    color: #51585c;
+    font-size: 1.5em;
+    margin-left: 22px;
+    cursor: pointer;
+}
+.add-block {
+    position: absolute;
+    width: 250px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0.95); /* 初始状态稍微小一些，鼠标悬停时放大 */
+    z-index: 1000;
+}
+
+.add-block:hover {
+    transform: scale(1); /* 鼠标悬停时放大效果 */
+}
+
+.add-block label {
+    font-size: 14px;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.add-block input {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.add-block input:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+.add-block button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF; 
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.add-block button:hover {
+    background-color: #0056b3; 
+}
+
+
+.search_chat {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.search_chat div {
+    width: 100%;
+}
+
+.search_chat div input {
+    width: 100%;
+    outline: none;
+    border: none;
+    background: #fff;
+    padding: 6px;
+    height: 38px;
+    border-radius: 30px;
+    font-size: 14px;
+    padding-left: 40px;
+}
+
+.search_chat div input::placeholder {
+    color: #bbb;
+}
+
+.search_chat div ion-icon {
+    position: absolute;
+    left: 30px;
+    top: 14px;
+    font-size: 1.2em;
+}
+
+.chatlist {
+    position: relative;
+    height: calc(100% - 110px);
+    overflow-y: auto;
+}
+
+.chatlist .block {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+}
+
+.chatlist .block.active {
+    background: #ebebeb;
+}
+
+.chatlist .block:hover {
+    background: #f5f5f5;
+}
+
+.chatlist .block .imgbx {
+    position: relative;
+    min-width: 45px;
+    height: 45px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chatlist .block .details {
+    position: relative;
+    width: 100%;
+
+}
+
+.chatlist .block .details .listHead {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.chatlist .block .details .listHead h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #111;
+}
+
+.chatlist .block .details .listHead .time {
+    font-size: 0.75em;
+    color: #111;
+}
+
+.chatlist .block.unread .details .listHead .time {
+    color: #06d755;
+}
+
+.message_p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message_p p {
+    color: #aaa;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    font-size: 0.9em;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message_p b {
+    background: #06d755;
+    color: #fff;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75em;
+}
+
+.imgText {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgText h4 {
+    font-weight: 500;
+    line-height: 1.2em;
+    margin-left: 15px;
+}
+
+.imgText h4 span {
+    font-size: 0.8em;
+    color: #555;
+}
+
+.chatBox {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 120px);
+    padding: 50px;
+    overflow-y: auto;
+}
+
+.message {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.message p {
+    position: relative;
+    right: 0;
+    text-align: right;
+    max-width: 65%;
+    padding: 12px;
+    background: #dcf8c6;
+    border-radius: 10px;
+    font-size: 0.9em;
+}
+
+.message p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #dcf8c6 0%, #dcf8c6 50%, transparent 50%, transparent);
+}
+
+.message p span {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    opacity: 0.5;
+}
+
+.my_message {
+    justify-content: flex-end;
+}
+
+.my_message p {
+    text-align: left;
+}
+
+.my_message p span {
+    text-align: right;
+}
+
+.frnd_message {
+    justify-content: flex-start;
+}
+
+.frnd_message p {
+    background: #fff;
+    text-align: left;
+}
+
+.message.frnd_message p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -12px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(225deg, #fff 0%, #fff 50%, transparent 50%, transparent);
+}
+
+.chatbox_input {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: #f0f0f0;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbox_input ion-icon {
+    cursor: pointer;
+    font-size: 1.8em;
+    color: #51585c;
+}
+
+.chatbox_input ion-icon {
+    margin-right: 15px;
+}
+
+.chatbox_input input {
+    position: relative;
+    width: 90%;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 1em;
+}
+
+#setting-window {
+    position: fixed;
+    height: 540px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #ededed;
+    z-index: 1000;
+    overflow-y: auto;
+    justify-content: center;
+    border-radius: 4%;
+    transition: opacity 0.5s ease;
+}
+
+#recommendation-window {
+    position: fixed;
+    height: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #ededed;
+    z-index: 1000;
+    overflow-y: auto;
+    justify-content: center;
+    border-radius: 2%;
+    transition: opacity 0.5s ease;
+}
+
+#polishing-window {
+    position: fixed;
+    height: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #ededed;
+    z-index: 1000;
+    overflow-y: auto;
+    justify-content: center;
+    border-radius: 2%;
+    transition: opacity 0.5s ease;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.message.frnd_message .pop-window {
+    display: none;
+    /* 默认隐藏 */
+    position: absolute;
+    /* 绝对定位在.chat-message元素内部 */
+    width: 190px;
+    height: 27px;
+    /* 调整为合适的高度 */
+    left: 0%;
+    top: -30px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    /* 其他样式 */
+}
+
+.message.frnd_message .popup-btn {
+    display: block;
+    padding: 5px 15px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.message.frnd_message .popup-btn:hover {
+    background-color: #e9eae9;
+}
+
+.pop-window .popup-btn::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 22px;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(-225deg, #fff 0%, #fff 50%, transparent 50%, transparent);
+}
+
+
+.title {
+    font-size: 24px;
+    /* 标题字体大小 */
+    color: #333;
+    /* 标题文本颜色 */
+    font-weight: bold;
+    /* 字体加粗 */
+    margin-bottom: 15px;
+    /* 标题下方的外边距 */
+    text-align: center;
+    /* 文本居中对齐 */
+    border-bottom: 2px solid #ccc;
+    /* 添加标题下方的边框线 */
+    padding-bottom: 10px;
+    /* 标题下方的内边距 */
+}
+
+.subtitle {
+    font-size: 18px;
+    /* 二级标题字体大小 */
+    color: #555;
+    /* 二级标题文本颜色 */
+    font-weight: 600;
+    /* 字体的粗细 */
+    margin-bottom: 10px;
+    /* 二级标题下方的外边距 */
+    text-align: center;
+    /* 文本左对齐 */
+    padding-left: 10px;
+    /* 二级标题左侧的内边距 */
+}
+
+#submit {
+    position: relative;
+    text-align: center;
+    border-top: 2px solid #ccc;
+    margin-top: 10px;
+}
+
+#submit button {
+    background-color: #aaacaa;
+    /* 按钮的背景颜色 */
+    color: white;
+    /* 按钮文本颜色 */
+    width: 15%;
+    padding: 5px 5px;
+    /* 按钮的内边距 */
+    border: none;
+    /* 移除边框 */
+    cursor: pointer;
+    /* 鼠标悬停时的光标样式 */
+    font-size: 12px;
+    /* 文本大小 */
+    border-radius: 5px;
+    /* 圆角边框 */
+    transition: background-color 0.3s;
+    /* 平滑的背景颜色过渡效果 */
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+#submit button:hover {
+    background-color: #3e3f3e;
+    /* 鼠标悬停时的背景颜色 */
+}
+
+/* 定义滑动条的整体样式 */
+input[type="range"] {
+    -webkit-appearance: none;
+    /* 移除Webkit浏览器的默认外观 */
+    width: 50%;
+    /* 宽度 */
+    background: transparent;
+    /* 设置透明背景 */
+    outline: none;
+    /* 移除轮廓线 */
+}
+
+/* 定义滑动条轨迹的样式 */
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 50%;
+    height: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #d8d8d8;
+    /* 背景颜色 */
+}
+
+input[type="range"]::-moz-range-track {
+    width: 50%;
+    height: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #f3f3f3;
+}
+
+/* 定义滑动条滑块（拇指）的样式 */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* 移除Webkit浏览器的默认外观 */
+    width: 10px;
+    /* 滑块宽度 */
+    height: 10px;
+    /* 滑块高度 */
+    border-radius: 50%;
+    /* 圆形滑块 */
+    background: #3e3f3e;
+    /* 滑块背景颜色 */
+    cursor: pointer;
+    /* 光标样式 */
+    margin-top: 0px;
+    /* 使滑块与轨迹对齐 */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+
+/*  */
+.custom-radio {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    /* 为自定义单选按钮留出空间 */
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 22px;
+    user-select: none;
+    /* 禁止选择文本 */
+}
+
+.custom-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-mark {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: 12px;
+    width: 12px;
+    background-color: #f3f3f3;
+    border-radius: 50%;
+    border: 2px solid #818581;
+    /* 边框颜色 */
+}
+
+/* 当单选按钮被选中时的样式 */
+.custom-radio input:checked~.radio-mark {
+    background-color: #3e3f3e;
+    /* 背景颜色 */
+}
+
+/* 创建选中时的指示器 */
+.custom-radio input:checked~.radio-mark:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 6px;
+    left: 6px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+/* 鼠标悬停时的样式 */
+.custom-radio:hover input~.radio-mark {
+    background-color: #ccc;
+}
+
+/* 单选按钮禁用时的样式 */
+.custom-radio input:disabled~.radio-mark {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.custom-select {
+    font-size: 16px;
+    width: 8%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* 圆角边框 */
+    appearance: none;
+    /* 移除默认外观 */
+    outline: none;
+    text-align: center;
+    background-color: #f3f3f3;
+    /* 背景颜色 */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M6 9l4 4 4-4" stroke="#000" stroke-width="2" fill="none"/></svg>');
+    /* 添加下拉箭头图标 */
+    background-position: right 10px center;
+    /* 调整箭头图标的位置 */
+    background-repeat: no-repeat;
+}
+
+/* 当下拉框被选中时的样式 */
+.custom-select:focus {
+    border-color: #3e3f3e;
+    /* 焦点时的边框颜色 */
+}
+
+
+#language-selection-setting {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#familiarity-setting {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#extraversion-setting {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.style-number {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.language-style {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.AI-polishing-result {
+    cursor: pointer;
+    margin-top: 10px;
+    border-top: 2px solid #ccc;
+}
+
+.AI-recommendation-result {
+    cursor: pointer;
+    margin-top: 10px;
+    border-top: 2px solid #ccc;
+}
+
+
+.language-style .custom-checkbox {
+    margin-left: 15%;
+
+}
+
+.loading-spinner, .loading-spinner-recommendation {
+    border: 5px solid #f5e5e5;
+    /* Light grey */
+    border-top: 5px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
