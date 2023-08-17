@@ -22,7 +22,7 @@ const gptConnection = express();
 const port = 3001;
 gptConnection.use(bodyParser_apt.json());
 gptConnection.use(cors());
-gptConnection.post("https://personalisedchat.netlify.app/ask-gpt-recommendation", async (req, res) => {
+gptConnection.post("https://fast-escarpment-98746-31874c6ce605.herokuapp.com/ask-gpt-recommendation", async (req, res) => {
     const { message, ai_language, ai_extraversion, familiarity, features_r_value } = req.body;
     const { familiarity_value, familiarity_checked } = familiarity;
     var familiarity_value_update = familiarity_value
@@ -51,7 +51,7 @@ gptConnection.post("https://personalisedchat.netlify.app/ask-gpt-recommendation"
         completion: completion.data.choices[0].message
     })
 })
-gptConnection.post("https://personalisedchat.netlify.app/ask-gpt-polishing", async (req, res) => {
+gptConnection.post("https://fast-escarpment-98746-31874c6ce605.herokuapp.com/ask-gpt-polishing", async (req, res) => {
 
     const { message, ai_language, ai_extraversion, familiarity, features_p_value } = req.body;
     console.log(req.body)
@@ -83,7 +83,7 @@ gptConnection.post("https://personalisedchat.netlify.app/ask-gpt-polishing", asy
     })
 })
 gptConnection.listen(port, () => {
-    console.log(`gptConnection listening at https://personalisedchat.netlify.app:${port}`);
+    console.log(`gptConnection listening at https://fast-escarpment-98746-31874c6ce605.herokuapp.com:${port}`);
 })
 ///////// server listen
 const WebSocket = require('ws');
@@ -178,7 +178,7 @@ const Chatstyle = sequelize.define('Chatstyle', {
 Chatstyle.sync()
 
 app.use(async ctx => {
-    if(ctx.url === 'https://personalisedchat.netlify.app/find-friends' && ctx.method === 'POST'){
+    if(ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/find-friends' && ctx.method === 'POST'){
         const { username } = ctx.request.body
         const result = await User.findOne({
             where: {
@@ -192,7 +192,7 @@ app.use(async ctx => {
             ctx.body = { result: null}
         }
     }
-    if(ctx.url === 'https://personalisedchat.netlify.app/save-friendList' && ctx.method === 'POST'){
+    if(ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-friendList' && ctx.method === 'POST'){
         const {username, friendlist, targetusername} = ctx.request.body
         const result = await Friend.findOne({
             where: {
@@ -223,7 +223,7 @@ app.use(async ctx => {
         }
         ctx.body = { result:friendlist}
     }
-    if(ctx.url === 'https://personalisedchat.netlify.app/get-friendlist' && ctx.method === 'POST'){
+    if(ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-friendlist' && ctx.method === 'POST'){
         const { username } = ctx.request.body
         const result = await Friend.findOne({
             where: {
@@ -236,7 +236,7 @@ app.use(async ctx => {
             ctx.body = { result: null}
         }
     }
-    if(ctx.url === 'https://personalisedchat.netlify.app/save-mymessage' && ctx.method === 'POST'){
+    if(ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-mymessage' && ctx.method === 'POST'){
         const {username, friendname, message} = ctx.request.body
         console.log(message)
         const result = await Message.findOne({
@@ -267,7 +267,7 @@ app.use(async ctx => {
         }
         ctx.body = { result:message}
     }
-    if(ctx.url === 'https://personalisedchat.netlify.app/get-message' && ctx.method === 'POST'){
+    if(ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-message' && ctx.method === 'POST'){
         const { username, friendname } = ctx.request.body
         const result = await Message.findOne({
             where: {
@@ -284,7 +284,7 @@ app.use(async ctx => {
         }
         
     }
-    if (ctx.url === 'https://personalisedchat.netlify.app/login' && ctx.method === 'POST') {
+    if (ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/login' && ctx.method === 'POST') {
         const { username, password } = ctx.request.body
         const user = await User.findOne({ where: { username, password } })
         if (user) {
@@ -293,7 +293,7 @@ app.use(async ctx => {
             ctx.body = { username: 'account or password incorrect!' }
         }
 
-    } else if (ctx.url === 'https://personalisedchat.netlify.app/registry' && ctx.method === 'POST') {
+    } else if (ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/registry' && ctx.method === 'POST') {
         const { username, password } = ctx.request.body
         const user = await User.create({ username, password })
         
@@ -305,12 +305,12 @@ app.use(async ctx => {
         fs.writeFileSync('publish/'+outputFileName, htmlContent, 'utf-8');
         console.log(`File ${outputFileName} created successfully!`);
         ctx.body = { success: true }
-    } else if (ctx.url === 'https://personalisedchat.netlify.app/users' && ctx.method === 'GET') {
+    } else if (ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/users' && ctx.method === 'GET') {
         const users = await User.findAll()
         ctx.body = { users: users.map(item => item.username) }
     }
 
-    if (ctx.url === 'https://personalisedchat.netlify.app/save-chat-style' && ctx.method === 'POST') {
+    if (ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-chat-style' && ctx.method === 'POST') {
         const { username, friendname, ailanguage, aiextroversion, familiarity, recommendation_checked, recommendation_value, polishing_checked, polishing_value } = ctx.request.body
         const { familiarity_checked, familiarity_value } = familiarity
         const { humor_r_checked, playful_r_checked, respectful_r_checked, serious_r_checked, offensive_r_checked } = recommendation_checked
@@ -329,7 +329,7 @@ app.use(async ctx => {
         })
         ctx.body = { success: true }
     }
-    if (ctx.url === 'https://personalisedchat.netlify.app/get-settings' && ctx.method === 'POST') {
+    if (ctx.url === 'https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-settings' && ctx.method === 'POST') {
         const { username, friendname } = ctx.request.body
         const result = await Chatstyle.findOne({
             where: {

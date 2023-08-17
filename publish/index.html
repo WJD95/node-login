@@ -50,7 +50,7 @@
             }
 
             async function fetchUser(){
-                const response = await fetch('https://personalisedchat.netlify.app/users')
+                const response = await fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/users')
                 const data = await response.json()
                 const userList = document.getElementById('userList')
                 userList.innerHTML = data.users.map(item => `<div>${item}<\div>`).join('')
@@ -60,7 +60,7 @@
 
             loginBtn.addEventListener('click', async() =>{
                 const body = getBody();
-                const response = await fetchData('https://personalisedchat.netlify.app/login', body)
+                const response = await fetchData('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/login', body)
                 const data = await response.json()
                 const loginUsername = document.getElementById('loginUsername')
                 loginUsername.innerText = data.username
@@ -73,7 +73,7 @@
             })
             registryBtn.addEventListener('click', async() =>{
                 const body = getBody();
-                const response =  fetchData('https://personalisedchat.netlify.app/registry', body)
+                const response =  fetchData('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/registry', body)
                 const data = await response.json()
             })
         </script>

@@ -9,7 +9,7 @@ function initial_friendlist() {
     const data = {
         username: username,
     }
-    fetch('https://personalisedchat.netlify.app/get-friendlist', {
+    fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-friendlist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ function initial_friendlist() {
                     friendlist: friendList,
                     targetusername: targetusername
                 }
-                fetch('https://personalisedchat.netlify.app/save-friendList', {
+                fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-friendList', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ function initial_friendlist() {
                 const data = {
                     username: friendname,
                 }
-                fetch('https://personalisedchat.netlify.app/find-friends', {
+                fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/find-friends', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -173,7 +173,7 @@ function initial_message(targetUser) {
         username: username,
         friendname: friendname,
     }
-    fetch('https://personalisedchat.netlify.app/get-message', {
+    fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-message', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -237,7 +237,7 @@ function initial_message(targetUser) {
                     }
                     messageText = targetmessage;
                     if (isAnyChecked && messageText) {
-                        fetch('https://personalisedchat.netlify.app/ask-gpt-recommendation', {
+                        fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/ask-gpt-recommendation', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -388,7 +388,7 @@ document.getElementById('save').addEventListener('click', function () {
             offensive_p_value: document.getElementById('humor_slider_p').value
         }
     };
-    fetch('https://personalisedchat.netlify.app/save-chat-style', {
+    fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-chat-style', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -411,7 +411,7 @@ document.getElementById('save').addEventListener('click', function () {
 var chatBox = document.getElementById('chatContainer');
 const br = document.createElement('br');
 
-var socket = new WebSocket("https://personalisedchat.netlify.app"); // WebSocket connection
+var socket = new WebSocket("https://fast-escarpment-98746-31874c6ce605.herokuapp.com"); // WebSocket connection
 
 ///////////////////////////
 socket.onmessage = function (event) {
@@ -435,7 +435,7 @@ socket.onmessage = function (event) {
             friendname: current_friendname,
             message: chatBox.innerHTML
         }
-        fetch('https://personalisedchat.netlify.app/save-mymessage', {
+        fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-mymessage', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -783,7 +783,7 @@ assistantButton.addEventListener('click', function () {
         }
     }
     if (isAnyChecked && messageText) {
-        fetch('https://personalisedchat.netlify.app/ask-gpt-polishing', {
+        fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/ask-gpt-polishing', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -907,7 +907,7 @@ function initial_settings(targetusername) {
         username: document.getElementById('username').innerText,
         friendname: targetusername
     };
-    fetch('https://personalisedchat.netlify.app/get-settings', {
+    fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-settings', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
