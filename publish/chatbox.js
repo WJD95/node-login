@@ -411,7 +411,7 @@ document.getElementById('save').addEventListener('click', function () {
 var chatBox = document.getElementById('chatContainer');
 const br = document.createElement('br');
 
-var socket = new WebSocket("http://localhost:8080"); // WebSocket connection
+var socket = new WebSocket("ws://localhost:8080"); // WebSocket connection
 
 ///////////////////////////
 socket.onmessage = function (event) {
