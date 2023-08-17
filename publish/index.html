@@ -50,7 +50,7 @@
             }
 
             async function fetchUser(){
-                const response = await fetch('https://tubular-pithivier-1ac39c.netlify.app/users')
+                const response = await fetch('https://personalisedchat.netlify.app/users')
                 const data = await response.json()
                 const userList = document.getElementById('userList')
                 userList.innerHTML = data.users.map(item => `<div>${item}<\div>`).join('')
