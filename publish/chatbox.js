@@ -9,7 +9,7 @@ function initial_friendlist() {
     const data = {
         username: username,
     }
-    fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-friendlist', {
+    fetch('http://localhost:3000/get-friendlist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ function initial_friendlist() {
                     friendlist: friendList,
                     targetusername: targetusername
                 }
-                fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-friendList', {
+                fetch('http://localhost:3000/save-friendList', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ function initial_friendlist() {
                 const data = {
                     username: friendname,
                 }
-                fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/find-friends', {
+                fetch('http://localhost:3000/find-friends', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -173,7 +173,7 @@ function initial_message(targetUser) {
         username: username,
         friendname: friendname,
     }
-    fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-message', {
+    fetch('http://localhost:3000/get-message', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -237,7 +237,7 @@ function initial_message(targetUser) {
                     }
                     messageText = targetmessage;
                     if (isAnyChecked && messageText) {
-                        fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/ask-gpt-recommendation', {
+                        fetch('http://localhost:3001/ask-gpt-recommendation', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -388,7 +388,7 @@ document.getElementById('save').addEventListener('click', function () {
             offensive_p_value: document.getElementById('humor_slider_p').value
         }
     };
-    fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-chat-style', {
+    fetch('http://localhost:3000/save-chat-style', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -411,7 +411,7 @@ document.getElementById('save').addEventListener('click', function () {
 var chatBox = document.getElementById('chatContainer');
 const br = document.createElement('br');
 
-var socket = new WebSocket("https://fast-escarpment-98746-31874c6ce605.herokuapp.com"); // WebSocket connection
+var socket = new WebSocket("http://localhost:8080"); // WebSocket connection
 
 ///////////////////////////
 socket.onmessage = function (event) {
@@ -435,7 +435,7 @@ socket.onmessage = function (event) {
             friendname: current_friendname,
             message: chatBox.innerHTML
         }
-        fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/save-mymessage', {
+        fetch('http://localhost:3000/save-mymessage', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -783,7 +783,7 @@ assistantButton.addEventListener('click', function () {
         }
     }
     if (isAnyChecked && messageText) {
-        fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/ask-gpt-polishing', {
+        fetch('http://localhost:3001/ask-gpt-polishing', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -907,7 +907,7 @@ function initial_settings(targetusername) {
         username: document.getElementById('username').innerText,
         friendname: targetusername
     };
-    fetch('https://fast-escarpment-98746-31874c6ce605.herokuapp.com/get-settings', {
+    fetch('http://localhost:3000/get-settings', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
