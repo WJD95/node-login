@@ -5,8 +5,13 @@ const { Sequelize, DataTypes } = require('sequelize')
 const ejs = require('ejs');
 const fs = require('fs');
 
-const app = new Koa()
 
+const app = new Koa()
+// Allow requests from 'http://personalisedchat.natapp1.cc'
+// const corsOptions = {
+//     origin: 'http://personalisedchat.natapp1.cc',
+//     optionsSuccessStatus: 200
+//   };
 ////openai configuration
 const { Configuration, OpenAIApi } = require('openai');
 const express = require('express');
@@ -15,13 +20,13 @@ const cors = require('cors');
 
 const configuration = new Configuration({
     organization: "org-11snTl0r9w18PpdRfpFGW5gn",
-    apiKey: "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",
+    apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 const gptConnection = express();
 const port = 3001;
 gptConnection.use(bodyParser_apt.json());
-gptConnection.use(cors());
+// gptConnection.use(cors(corsOptions));
 gptConnection.post("/ask-gpt-recommendation", async (req, res) => {
     const { message, ai_language, ai_extraversion, familiarity, features_r_value } = req.body;
     const { familiarity_value, familiarity_checked } = familiarity;
@@ -103,7 +108,9 @@ wss.on('connection', function connection(ws) {
 ///////// 
 
 app.use(bodyParser())
-
+///////////////////
+// app.use(cors(corsOptions))
+///////////////////
 app.use(async (ctx, next) => {
     ctx.set('Access-Control-Allow-Origin', '*')
 
@@ -178,6 +185,7 @@ const Chatstyle = sequelize.define('Chatstyle', {
 Chatstyle.sync()
 
 app.use(async ctx => {
+    console.log(ctx.url)
     if(ctx.url === '/find-friends' && ctx.method === 'POST'){
         const { username } = ctx.request.body
         const result = await User.findOne({
